@@ -133,6 +133,8 @@ public class FragmentCotitacion extends Fragment {
         requestQueue.add(jsonArrayRequest);
 
 
+
+
         // Realizar la solicitud GET para obtener la lista de productos
         String url1 = ConfigApi.baseUrlE + "/productoServicio/listar";
         JsonArrayRequest jsonArrayRequest1 = new JsonArrayRequest(Request.Method.GET, url1, null,
@@ -238,6 +240,7 @@ public class FragmentCotitacion extends Fragment {
 
 
         queue = Volley.newRequestQueue(getActivity());
+
 
         return view;
     }
@@ -359,6 +362,20 @@ public class FragmentCotitacion extends Fragment {
         //coti.setCotiFechaRegistro(fechahoy);
         coti.setCotiMonto(Double.parseDouble(edtmontocoti.getText().toString()));
         coti.setCotiTipoEvento("cumpleaños");
+
+        spinnerProductos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                                       @Override
+                                                       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                                           Producto producto = (Producto) parent.getItemAtPosition(position);
+                                                           coti.setProducto(producto);
+                                                       }
+
+                                                       @Override
+                                                       public void onNothingSelected(AdapterView<?> parent) {
+                                                           Toast.makeText(requireContext(), "NO HA SELCCIONADO UN PRODUCTO", Toast.LENGTH_SHORT).show();
+                                                       }
+                                                   }
+        );
 
 
         // Convertir el objeto Persona a JSON utilizando la biblioteca Gson
