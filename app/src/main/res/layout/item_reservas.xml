@@ -207,7 +207,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/estadoTextView"
         tools:ignore="MissingConstraints"
-        tools:text="tipoev" />
+        tools:text="tipoevendto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
